@@ -1,0 +1,29 @@
+# VM disks (large binary files)
+*.qcow2
+*.qcow2.*
+*.img
+*.vmdk
+
+# ISO files
+*.iso
+
+# QEMU build artifacts
+qemu-*/
+*.tar.xz
+
+# Log files
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*~
