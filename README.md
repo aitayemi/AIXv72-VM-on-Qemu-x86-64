@@ -2,7 +2,7 @@
 
 > Run IBM AIX 7.2 on x86_64 hardware using QEMU's PowerPC (ppc64) full-system emulation. Tested on AWS EC2 t3.xlarge running Ubuntu 22.04 LTS.
 
-![Architecture Diagram](docs/architecture_diagram.png)
+![Architecture Diagram](/architecture_diagram.png)
 
 ## Table of Contents
 
