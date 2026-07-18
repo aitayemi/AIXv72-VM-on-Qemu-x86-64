@@ -1,6 +1,6 @@
-# PCH Sweepstakes Auto-Entry System
+# Running AIX v7.2 VM on QEMU x86-64
 
-> Automated sweepstakes entry submission for Publishers Clearing House (PCH) using Selenium WebDriver in a containerized Selenium Grid environment.
+> Run IBM AIX 7.2 on x86_64 using QEMU PowerPC emulation. Complete setup guide, automation scripts, and architecture diagrams for Ubuntu hosts — tested on AWS EC2.
 
 ![Architecture Diagram](/architecture_diagram.png)
 
