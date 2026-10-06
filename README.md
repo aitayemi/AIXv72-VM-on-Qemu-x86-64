@@ -247,6 +247,20 @@ qemu-system-ppc64 \
   -device scsi-hd,drive=drive-virtio-disk0 \
   -cdrom /wip/AIX72ISOs/aix_7200-04-02-2027_1of2_072020.iso \
   -prom-env "boot-command=boot cdrom:"
+
+Alternative configuration - works if running QEMU on a remote Linux system and you haven't configured X-Forwarding properly and need the VM's console to appear in the terminal on the Linux host
+cd /opt/qemu/bin/ && sudo ./qemu-system-ppc64 \
+  -cpu POWER8 \
+  -machine pseries \
+  -m 4096 \
+  -nographic \
+  -drive file=/run/media/aitayemi/itababa1/VMs/aix72.qcow2,if=none,id=drive-virtio-disk0 \
+  -device virtio-scsi-pci,id=scsi \
+  -device scsi-hd,drive=drive-virtio-disk0 \
+  -drive file=/wip/AIX72ISOs/aix_7200-04-02-2027_1of2_072020.iso,if=none,id=cd0,media=cdrom,readonly=on \
+  -device scsi-cd,drive=cd0,bus=scsi.0 \
+  -prom-env "boot-command=boot cdrom:"
+
 ```
 
 ### Installation Steps
@@ -351,6 +365,7 @@ qemu-system-ppc64 \
   -device virtio-scsi-pci,id=scsi \
   -device scsi-hd,drive=drive-virtio-disk0 \
   -prom-env "boot-command=boot disk:"
+
 ```
 
 **Initial Setup:**
@@ -551,6 +566,7 @@ qemu-system-ppc64 \
   -prom-env "boot-command=boot disk:" \
   -net nic,macaddr=be:16:43:37:16:ec \
   -net tap,script=no,ifname=tap0,downscript=no
+
 ```
 
 ### Headless Mode (Daemonize)
