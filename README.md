@@ -299,7 +299,7 @@ qemu-system-ppc64 \
   -prom-env "boot-command=boot cdrom:"
 ```
 
-**Menu selections:**
+**Menu selections (select 3):**
 1. `1` - Define the System Console
 2. `1` - English
 3. `3` - Start Maintenance Mode
