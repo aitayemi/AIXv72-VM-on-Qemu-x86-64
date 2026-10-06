@@ -491,10 +491,16 @@ AIX defaults to the Korn shell (`ksh`). Bash is more familiar for most Linux use
 ### 1. Expand /opt Filesystem
 
 ```bash
-chfs -a size=+60M /opt
+chfs -a size=+1G /
+chfs -a size=+1G /opt
+chfs -a size=+1G /tmp
+chfs -a size=+1G /home
+chfs -a size=+1G /usr
+chfs -a size=+1G /var
 ```
 
 ### 2. Download Bash RPMs
+You can download the packages on the Linux host and then use SCP to transfer them to the AIX VM since you have configured networking on it (scp *.rpm root@<VM-ip>:/tmp/.
 
 ```bash
 # From AIX with internet access, or create an ISO on the host
