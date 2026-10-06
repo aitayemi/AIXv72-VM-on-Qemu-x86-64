@@ -1,6 +1,6 @@
 # QEMU AIX 7.2 on Ubuntu (x86_64)
 
-> Run IBM AIX 7.2 on x86_64 hardware using QEMU's PowerPC (ppc64) full-system emulation. Tested on AWS EC2 t3.xlarge running Ubuntu 22.04 LTS. This is an alternative option to learn AIX if you do not have a physical IBM POWER system.
+> Run IBM AIX 7.2 on x86_64 hardware using QEMU's PowerPC (ppc64) full-system emulation. Tested on AWS EC2 t3.xlarge running Ubuntu 22.04 LTS. Adapting it for on-prem and/or Red Hat (and its variants) is trivial. variants).
 
 ![Architecture Diagram](/architecture_diagram.png)
 
