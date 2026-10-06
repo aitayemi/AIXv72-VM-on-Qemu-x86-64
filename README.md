@@ -251,6 +251,7 @@ qemu-system-ppc64 \
 
 Alternative config 1 - the VM's console is displayed in the terminal/shell session on the Linux host. This is actually required if you are connected to the Linux host via a client such as MobaXterm as otherwise QEMU will attampt to send its display to the MobaXterm Xserver and if not properly configured, will fail. So, add the "-nographic" parameter and remove the "-serial stdio" parameter:
 cd /opt/qemu/bin/ && sudo ./qemu-system-ppc64 -cpu POWER8 -machine pseries -m 8192 -nographic -device spapr-vscsi,id=scsi0 -drive file=/wip/aix72.qcow2,if=none,id=hd0 -device scsi-hd,drive=hd0,bus=scsi0.0,channel=0,scsi-id=0,lun=0 -drive file=/wip/AIX72ISOs/aix_7200-04-02-2027_1of2_072020.iso,if=none,id=cd0,media=cdrom,readonly=on -device scsi-cd,drive=cd0,bus=scsi0.0,channel=0,scsi-id=1,lun=0 -boot d
+Same command using virtio subsystem instead: cd /opt/qemu/bin/ && sudo  ./qemu-system-ppc64 -nographic -cpu POWER8 -machine pseries -m 8192 -drive file=/wip/aix72.qcow2,if=none,id=drive-virtio-disk0 -device virtio-scsi-pci,id=scsi -device scsi-hd,drive=drive-virtio-disk0 -prom-env "boot-command=boot disk:"
 
 ```
 
