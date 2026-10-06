@@ -248,28 +248,22 @@ qemu-system-ppc64 \
   -cdrom /wip/AIX72ISOs/aix_7200-04-02-2027_1of2_072020.iso \
   -prom-env "boot-command=boot cdrom:"
 
-Alternative configuration - works if running QEMU on a remote Linux system and you are connected to the Linux host via MobaXterm and need the VM's console to pop-up on your MobaXterm X-Server for example:
-cd /opt/qemu/bin/ && sudo ./qemu-system-ppc64 \
-  -cpu POWER8 \
-  -machine pseries \
-  -m 4096 \
-  -nographic \
-  -drive file=/run/media/aitayemi/itababa1/VMs/aix72.qcow2,if=none,id=drive-virtio-disk0 \
-  -device virtio-scsi-pci,id=scsi \
-  -device scsi-hd,drive=drive-virtio-disk0 \
-  -drive file=/wip/AIX72ISOs/aix_7200-04-02-2027_1of2_072020.iso,if=none,id=cd0,media=cdrom,readonly=on \
-  -device scsi-cd,drive=cd0,bus=scsi.0 \
-  -prom-env "boot-command=boot cdrom:"
+
+Alternative config 1 - the VM's console is displayed in the terminal on the Linux host:
+cd /opt/qemu/bin/ && sudo ./qemu-system-ppc64 -cpu POWER8 -machine pseries -m 8192 -nographic -device spapr-vscsi,id=scsi0 -drive file=/wip/aix72.qcow2,if=none,id=hd0 -device scsi-hd,drive=hd0,bus=scsi0.0,channel=0,scsi-id=0,lun=0 -drive file=/wip/AIX72ISOs/aix_7200-04-02-2027_1of2_072020.iso,if=none,id=cd0,media=cdrom,readonly=on -device scsi-cd,drive=cd0,bus=scsi0.0,channel=0,scsi-id=1,lun=0 -boot d
+
+Alternative config 2 - works if running QEMU on a remote Linux system and you are connected to the Linux host via MobaXterm and need the VM's console to pop-up on your MobaXterm X-Server for example:
+cd /opt/qemu/bin/ && sudo env DISPLAY=$DISPLAY XAUTHORITY=$HOME/.Xauthority ./qemu-system-ppc64 -cpu POWER8 -machine pseries -m 8192 -nographic -drive file=/wip/aix72.qcow2,if=none,id=hd0 scsi-hd,drive=hd0,bus=scsi0.0,channel=0,scsi-id=0,lun=0 -drive file=/wip/AIX72ISOs/aix_7200-04-02-2027_1of2_072020.iso,if=none,id=cd0,media=cdrom,readonly=on -device scsi-cd,drive=cd0,bus=scsi0.0,channel=0,scsi-id=1,lun=0 -boot d
 
 ```
 
 ### Installation Steps
 
 1. **Boot from CD-ROM** - The VM boots from the AIX installation ISO
-2. **Select Console** - Choose option `1` to define the System Console
+2. **Select Console** - Choose option `1` to define the System Console (you can do this once the boot code 0c31 is displayed)
 3. **Language** - Select `1` for English
 4. **Installation Settings** - Customize as needed:
-   - Ensure **SSH client and server** are selected for remote access
+   - Ensure **SSH client and server** are selected for remote access (select "2 Change/Show Installation Settings and Install" --> "4  More Options  (Software install options)" --> enter 3, then 4, to enable both SSH client and server, then "0  Install with the current settings listed above.")
    - Adjust filesystem sizes if needed
 5. **Begin Installation** - The process takes approximately **110 minutes**
 
