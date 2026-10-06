@@ -248,7 +248,7 @@ qemu-system-ppc64 \
   -cdrom /wip/AIX72ISOs/aix_7200-04-02-2027_1of2_072020.iso \
   -prom-env "boot-command=boot cdrom:"
 
-Alternative configuration - works if running QEMU on a remote Linux system and you haven't configured X-Forwarding properly and need the VM's console to appear in the terminal on the Linux host
+Alternative configuration - works if running QEMU on a remote Linux system and you are connected to the Linux host via MobaXterm and need the VM's console to pop-up on your MobaXterm X-Server for example:
 cd /opt/qemu/bin/ && sudo ./qemu-system-ppc64 \
   -cpu POWER8 \
   -machine pseries \
