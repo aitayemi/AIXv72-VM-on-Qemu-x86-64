@@ -308,7 +308,8 @@ qemu-system-ppc64 \
 6. `1` - Select the volume group (hdisk0)
 7. `1` - Access this Volume Group and start a shell
 
-In the maintenance menu, choose "1 Access a Root Volume Group
+In the maintenance menu, choose "1 Access a Root Volume Group", then enter 0 and press ENTER on the warning screen. 
+Then enter 1 to access the root volume group, and then 1 to access the volume group and start a shell.
 
 **Inside maintenance mode:**
 
