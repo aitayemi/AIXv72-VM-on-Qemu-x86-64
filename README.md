@@ -269,7 +269,7 @@ cd /opt/qemu/bin/ && sudo env DISPLAY=$DISPLAY XAUTHORITY=$HOME/.Xauthority ./qe
 
 ### Post-Install Reboot Loop
 
-After installation completes, the VM will enter a **reboot loop**. This is expected due to an `fsck64` compatibility issue.
+After installation completes, you are prompted to press 1 to continue, after which the VM will enter a **reboot loop**. This is expected due to an `fsck64` compatibility issue.
 
 **To exit the loop:**
 ```bash
