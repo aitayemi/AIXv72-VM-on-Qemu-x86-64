@@ -149,7 +149,7 @@ sudo apt install -y gcc make ninja-build libglib2.0-dev libpixman-1-dev ncurses-
 sudo apt install -y bridge-utils
 ```
 
-### 2. Compile QEMU from Source
+### 2. Compile QEMU from Source (latest version is 11.1.2 as at 10/06/2026)
 
 ```bash
 # Download QEMU 7.2.0
@@ -253,7 +253,7 @@ Alternative config 1 - the VM's console is displayed in the terminal on the Linu
 cd /opt/qemu/bin/ && sudo ./qemu-system-ppc64 -cpu POWER8 -machine pseries -m 8192 -nographic -device spapr-vscsi,id=scsi0 -drive file=/wip/aix72.qcow2,if=none,id=hd0 -device scsi-hd,drive=hd0,bus=scsi0.0,channel=0,scsi-id=0,lun=0 -drive file=/wip/AIX72ISOs/aix_7200-04-02-2027_1of2_072020.iso,if=none,id=cd0,media=cdrom,readonly=on -device scsi-cd,drive=cd0,bus=scsi0.0,channel=0,scsi-id=1,lun=0 -boot d
 
 Alternative config 2 - works if running QEMU on a remote Linux system and you are connected to the Linux host via MobaXterm and need the VM's console to pop-up on your MobaXterm X-Server for example:
-cd /opt/qemu/bin/ && sudo env DISPLAY=$DISPLAY XAUTHORITY=$HOME/.Xauthority ./qemu-system-ppc64 -cpu POWER8 -machine pseries -m 8192 -nographic -drive file=/wip/aix72.qcow2,if=none,id=hd0 -device scsi-hd,drive=hd0,bus=scsi0.0,channel=0,scsi-id=0,lun=0 -drive file=/wip/AIX72ISOs/aix_7200-04-02-2027_1of2_072020.iso,if=none,id=cd0,media=cdrom,readonly=on -device scsi-cd,drive=cd0,bus=scsi0.0,channel=0,scsi-id=1,lun=0 -boot d
+cd /opt/qemu/bin/ && sudo env DISPLAY=$DISPLAY XAUTHORITY=$HOME/.Xauthority ./qemu-system-ppc64 -cpu POWER8 -machine pseries -m 8192 -device spapr-vscsi,id=scsi0 -drive file=/wip/aix72.qcow2,if=none,id=hd0 -device scsi-hd,drive=hd0,bus=scsi0.0,channel=0,scsi-id=0,lun=0 -drive file=/run/media/aitayemi/itababa2/AIX_7x_ISOs/AIX72ISOs/aix_7200-04-02-2027_1of2_072020.iso,if=none,id=cd0,media=cdrom,readonly=on -device scsi-cd,drive=cd0,bus=scsi0.0,channel=0,scsi-id=1,lun=0 -boot d
 
 ```
 
