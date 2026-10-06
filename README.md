@@ -422,11 +422,11 @@ sudo ip link set dev tap0 master br0
 sudo sysctl -w net.ipv4.ip_forward=1
 echo 1 | sudo tee /proc/sys/net/ipv4/conf/tap0/proxy_arp
 
-# Add route for AIX VM
+# Add route for AIX VM - optional if up and running libvirtd
 sudo ip route add 10.0.2.16 dev br0
 sudo arp -Ds 10.0.2.16 eth0 pub
 
-# Configure NAT
+# Configure NAT - optional if up and running libvirtd
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 sudo iptables -I FORWARD 1 -i tap0 -j ACCEPT
 sudo iptables -I FORWARD 1 -o tap0 -m state --state RELATED,ESTABLISHED -j ACCEPT
@@ -532,7 +532,7 @@ echo "/usr/bin/bash" | sudo tee -a /etc/shells
 chsh username /usr/bin/bash
 ```
 
-### Create ISO with RPMs (Host Side)
+### Create ISO with RPMs (Host Side) - optional
 
 If AIX doesn't have internet access, create an ISO on the Ubuntu host:
 
